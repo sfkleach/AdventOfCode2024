@@ -1,13 +1,7 @@
 {
     "name": "Python & Poetry Development Environment",
-    "image": "mcr.microsoft.com/devcontainers/python:3.9",
+    "image": "mcr.microsoft.com/devcontainers/python:latest",
     "features": {
-        "ghcr.io/devcontainers/features/poetry:1": {
-            "version": "latest"
-        },
-        "ghcr.io/devcontainers/features/just:1": {
-            "version": "latest"
-        }
     },
     "customizations": {
         "vscode": {
@@ -16,12 +10,12 @@
                 "ms-python.vscode-pylance",
                 "editorconfig.editorconfig",
                 "ms-azuretools.vscode-docker"
-            ]
+            ],
+            "settings": {
+                "python.pythonPath": "/usr/local/bin/python"
+            }
         }
     },
-    "settings": {
-        "python.pythonPath": "/usr/local/bin/python"
-    },
-    "postCreateCommand": "poetry install",
+    "postCreateCommand": "poetry install && ./.devcontainer/init.sh",
     "remoteUser": "vscode"
 }
