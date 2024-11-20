@@ -16,6 +16,6 @@
             }
         }
     },
-    "postCreateCommand": "poetry install && ./.devcontainer/init.sh",
+    "postCreateCommand": "./.devcontainer/init.sh",
     "remoteUser": "vscode"
 }
