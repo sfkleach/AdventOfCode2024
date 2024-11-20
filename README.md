@@ -18,12 +18,12 @@ or pypi packages.
      found that keeping these separate avoids wasting time about how the parts should
      be organised.
    - To begin with they take no arguments but as the puzzles get more 
-       complex we may need to add --input and --debug flags.
+       complex we may need to add (say) --input and --debug flags.
    - In the snippets folder the main.py snippet is an argparse template.
    - If you add arguments, remember to fix up the `Justfile`.
 4. Packages are to be managed using poetry.
    - To start with we don't include it. 
-   - We add it to each days separately on demand.
+   - We add it to any given day<n> folder on demand.
    - If we add it, we need to adjust the `Justfile` accordingly.
 5. Our command launcher is `just`
    - To run part<n> use the command `just part<n>`
