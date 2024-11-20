@@ -2,7 +2,7 @@
     "name": "Python & Poetry Development Environment",
     "image": "mcr.microsoft.com/devcontainers/python:3.9",
     "features": {
-        "ghcr.io/devcontainers/features/poetry:1": {
+        "ghcr.io/devcontainers-extra/features/poetry:2": {
             "version": "latest"
         },
         "ghcr.io/devcontainers/features/just:1": {
