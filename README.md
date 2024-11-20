@@ -13,13 +13,13 @@ or pypi packages.
 3. Each day folder is intended to be a completely standalone project.
    - Just copy and paste between days rather than try to share. I have found 
      that helps to keep up the momentum.
-   - Code that is common to both parts goes in the day<n>.py file.
-   - part1.py and part2.py are main programs for the separate parts. Again I have
+   - Code that is common to both parts goes in the `day<n>.py` file.
+   - `part1.py` and `part2.py` are main programs for the separate parts. Again I have
      found that keeping these separate avoids wasting time about how the parts should
      be organised.
    - To begin with they take no arguments but as the puzzles get more 
-       complex we may need to add (say) --input and --debug flags.
-   - In the snippets folder the main.py snippet is an argparse template.
+       complex we may need to add (say) `--input` and `--debug` flags.
+   - In the snippets folder the `main.py` snippet is an argparse template.
    - If you add arguments, remember to fix up the `Justfile`.
 4. Packages are to be managed using poetry.
    - To start with we don't include it. 
