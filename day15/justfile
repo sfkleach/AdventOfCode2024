@@ -1,5 +1,9 @@
 # Command launcher file for `just`.
 
+[private]
+default:
+    @just --list
+
 # Runs the part 1 puzzle with the test input.
 test1:
     python3 part1.py --input test.txt
