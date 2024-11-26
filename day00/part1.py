@@ -1,9 +1,15 @@
-from day25 import *
+from day00 import parseCaloriesFile
 import argparse
 from pathlib import Path
 
+
+def findMax( data ):
+    return max( map( sum, data ) )
+
 def run(args):
-    ...
+    data = parseCaloriesFile( args.input )
+    mx = findMax( data )
+    print( mx )
 
 def main():
     # Create the argument parser
@@ -18,4 +24,3 @@ def main():
     
 if __name__ == '__main__':
     main()
-

@@ -2,7 +2,7 @@
 
 [private]
 default:
-    @just --list
+    just --list
 
 # Runs the part 1 puzzle with the test input.
 test1:
@@ -14,7 +14,7 @@ test2:
 
 # Runs the part 1 puzzle with the challenge input.
 part1:
-    python3 part2.py --input input.txt
+    python3 part1.py --input input.txt
 
 # Runs the part 2 puzzle with the challenge input.
 part2:
