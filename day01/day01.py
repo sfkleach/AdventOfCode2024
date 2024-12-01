@@ -6,7 +6,7 @@ def parse_input(input_file):
 
     # Convert the lines to integers
     numbers = [line.split() for line in lines]
-    L1 = sorted([int(x[0]) for x in numbers])
-    L2 = sorted([int(x[1]) for x in numbers])
+    L1 = [int(x[0]) for x in numbers]
+    L2 = [int(x[1]) for x in numbers]
 
     return (L1, L2)
