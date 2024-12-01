@@ -1,9 +1,20 @@
-from day01 import *
+from day01 import parse_input
 import argparse
 from pathlib import Path
+from collections import defaultdict
 
 def run(args):
-    ...
+    (L1, L2) = parse_input(args.input)
+    # B1 = defaultdict(int)
+    # for x in L1:
+    #     B1[x] += 1
+    B2 = defaultdict(int)
+    for x in L2:
+        B2[x] += 1
+
+    score = sum(a * B2[a] for a in L1)
+
+    print(score)
 
 def main():
     # Create the argument parser
