@@ -3,7 +3,22 @@ import argparse
 from pathlib import Path
 
 def run(args):
-    ...
+    data_dirty = get_file_details(args.input)
+    print(data_dirty)
+    (list1, list2) = create_lists_from_input(data_dirty["output"]) 
+
+    list1 = sorted(list1)
+    list2 = sorted(list2)
+
+    total = 0
+
+    for item in list1:
+        instances = list2.count(item)
+        print(item + " X " + str(instances))
+        total += instances * int(item)
+    
+    
+    print("Total:", total)
 
 def main():
     # Create the argument parser
