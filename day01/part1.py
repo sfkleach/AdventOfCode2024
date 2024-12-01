@@ -8,7 +8,6 @@ def run(args):
 
     total = sum(abs(a - b) for a, b in numbers)
 
-    # Print the result
     print(total)
 
 def main():

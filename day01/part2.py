@@ -5,9 +5,6 @@ from collections import defaultdict
 
 def run(args):
     (L1, L2) = parse_input(args.input)
-    # B1 = defaultdict(int)
-    # for x in L1:
-    #     B1[x] += 1
     B2 = defaultdict(int)
     for x in L2:
         B2[x] += 1
