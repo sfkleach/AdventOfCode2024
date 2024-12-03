@@ -1,9 +1,12 @@
-from day02 import *
+from day02 import read_input
 import argparse
 from pathlib import Path
+from itertools import count
 
 def run(args):
-    ...
+    reports = read_input(Path(args.input))
+    print(sum(1 for _ in filter(lambda x: x.is_safe(), reports)))
+
 
 def main():
     # Create the argument parser
