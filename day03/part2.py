@@ -4,42 +4,42 @@ from pathlib import Path
 import re
 
 def run(args):
-    data = get_file_details(args.input)
+    raw_data = get_file_raw(args.input)
+    data = raw_data["output"]
     print(data)
 
     result = 0
 
     # look for the pattern "mul(" + stuff + ")"
-    for item in data["output"]:
-        matches = []
+    matches = []
+    
+    matches = re.findall(r"mul\(([^()]+)\)|don't\(\)|do\(\)", str(data)) #I used ChatGPT for this. I do not learn black magic like this
+    operations = re.findall(r"don't\(\)|do\(\)", str(data))
+
+    print(matches)
+    print(operations)
+
+    process = True
+
+    for match in matches:
+        if match == "":
+            match = operations.pop(0)
         
-        matches = re.findall(r"mul\(([^()]+)\)|don't\(\)|do\(\)", item) #I used ChatGPT for this. I do not learn black magic like this
-        operations = re.findall(r"don't\(\)|do\(\)", item)
 
-        print(matches)
-        print(operations)
+        if match == "don't()":
+            process = False
+        elif match == "do()":
+            process = True
 
-        process = True
+        if process == False:
+            continue
+        
+        print(match)
 
-        for match in matches:
-            if match == "":
-                match = operations.pop(0)
-            
+        potential_nums = match.split(",")
 
-            if match == "don't()":
-                process = False
-            elif match == "do()":
-                process = True
-
-            if process == False:
-                continue
-            
-            print(match)
-
-            potential_nums = match.split(",")
-
-            if len(potential_nums) == 2 and can_be_integer(potential_nums[0]) and can_be_integer(potential_nums[1]):
-                result += int(potential_nums[0]) * int(potential_nums[1])
+        if len(potential_nums) == 2 and can_be_integer(potential_nums[0]) and can_be_integer(potential_nums[1]):
+            result += int(potential_nums[0]) * int(potential_nums[1])
             
     print("Result: " + str(result))   
 
