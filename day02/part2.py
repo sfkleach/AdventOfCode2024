@@ -5,8 +5,7 @@ from pathlib import Path
 def run(args):
     data = get_file_details(args.input)
     print(data)
-
-    ascending_or_descending = []
+    
     result = 0
 
     for line in data["output"]:
