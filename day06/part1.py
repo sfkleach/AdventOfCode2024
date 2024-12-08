@@ -1,9 +1,12 @@
-from day06 import *
+from day06 import readGrid
 import argparse
 from pathlib import Path
 
+
 def run(args):
-    ...
+    G = readGrid(args.input)
+    path = G.patrol()
+    print(len(set(path)))
 
 def main():
     # Create the argument parser
