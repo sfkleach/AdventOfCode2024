@@ -1,9 +1,14 @@
-from day07 import *
+from day07 import readEquations
 import argparse
 from pathlib import Path
 
+# part1 should be 6392012777720
+
 def run(args):
-    ...
+    equations = readEquations(args.input)
+    for equation in equations:
+        print(equation.has_solution1(), equation)
+    print(sum(equation.target for equation in equations if equation.has_solution1()))
 
 def main():
     # Create the argument parser
