@@ -1,9 +1,13 @@
-from day05 import *
+from day05 import RuleSet, PageList, parseInput
 import argparse
 from pathlib import Path
 
 def run(args):
-    ...
+    rules, pagelist_collection = parseInput(args.input)
+    print(rules)
+    print(pagelist_collection)
+    total = sum( pagelist.middle() for pagelist in pagelist_collection if pagelist.is_ordered(rules) )
+    print(f"Total: {total}")
 
 def main():
     # Create the argument parser
