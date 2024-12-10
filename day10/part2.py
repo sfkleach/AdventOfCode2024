@@ -3,7 +3,12 @@ import argparse
 from pathlib import Path
 
 def run(args):
-    ...
+    m = Map(read_input(args.input))
+    trails = m.find_trail_ratings()
+    print('Trails: ')
+    for z, n in trails.items():
+        print(z, n)
+    print('Sum = ', sum(trails.values()))
 
 def main():
     # Create the argument parser
