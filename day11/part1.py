@@ -1,10 +1,8 @@
-from day11 import *
+from day11 import read_input
 import argparse
 from pathlib import Path
 
-def read_input(input_path: Path) -> tuple[int]:
-    with open(input_path) as f:
-        return tuple(map(int, f.read().split()))
+
     
 def blink_stone(n: int):
     if n == 0:
