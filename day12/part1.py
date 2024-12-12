@@ -68,11 +68,6 @@ class Plot:
         return region_ids, region_map
 
 
-
-def read_input(input_path: Path) -> list[str]:
-    with input_path.open() as f:
-        return f.read().splitlines()
-
 def run(args):
     lines = read_input(args.input)
     plot = Plot(lines)
