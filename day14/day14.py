@@ -51,7 +51,7 @@ class Lobby:
         sf = 1
         for i in range(1, 5):
             sf *= q[i]
-        return sf
+        return sf, q
     
     def print(self):
         text = [ self.width * [ 0 ] for _ in range(self.height) ]
@@ -61,6 +61,30 @@ class Lobby:
             text[y][x] += 1
         for row in text:
             print(''.join([str(c) if c > 0 else '.' for c in row]))
+
+    def superprint(self):
+        w2 = self.width // 2
+        h2 = self.height // 2
+        text = [ self.width * [ 0 ] for _ in range(self.height) ]
+
+        
+        for robot in self.robots:
+            x = robot.posn[0]
+            y = robot.posn[1]
+            text[y][x] += 1
+        for i in range(self.height):
+            for j in range(self.width):
+                n = text[i][j]
+                if n:
+                    text[i][j] = str(text[i][j])
+                else:
+                    text[i][j] = '.'
+        for i in range(self.height):
+            text[i][w2] = '|'
+        for i in range(self.width):
+            text[h2][i] = '-'
+        for row in text:
+            print(''.join(row))        
 
     def topleft(self):
         N = 0

@@ -4,21 +4,21 @@ from pathlib import Path
 
 def run(args):
     lobby = Lobby(read_input(args.input), args.width, args.height)
-    lo = lobby.safety()
+    lo, _ = lobby.safety()
     hi = lo
-    for i in range(1, 1_000_000):
+    for i in range(1, 8_000):
         if i % 100_000 == 0:
             print(f"Mark: {i}")
         lobby.advance(1)
-        r = lobby.safety()
-        if r < lo: # and lobby.topleft() < 15 and lobby.topright() < 15:
+        r, q = lobby.safety()
+        if r < lo:
             lo = r
-            print(f"New low {lo} at {i}")
-            lobby.print()
+            print(f"New low {lo} at {i}. Quadrants: {q}")
+            lobby.superprint()
             print()
         elif r > hi:
             hi = r
-            print(f"New high: {hi} at {i}")
+            print(f"New high: {hi} at {i}. Quadrants: {q}")
             lobby.print()
             print()
 
