@@ -6,16 +6,16 @@ default:
 
 # Runs the part 1 puzzle with the test input.
 test1:
-    python3 part1.py --input test.txt
+    python3 part1.py --input test.txt --width 11 --height 7 --count 100
 
 # Runs the part 2 puzzle with the test input.
 test2:
-    python3 part2.py --input test.txt
+    python3 part2.py --input test.txt --width 11 --height 7 --count 100
 
 # Runs the part 1 puzzle with the challenge input.
 part1:
-    python3 part1.py --input input.txt
+    python3 part1.py --input input.txt --width 101 --height 103 --count 100
 
 # Runs the part 2 puzzle with the challenge input.
 part2:
-    python3 part2.py --input input.txt
+    python3 part2.py --input input.txt --width 101 --height 103 --count 100
