@@ -55,16 +55,44 @@ class Lobby:
     
     def print(self):
         text = [ self.width * [ 0 ] for _ in range(self.height) ]
-        print(text)
         for robot in self.robots:
             x = robot.posn[0]
             y = robot.posn[1]
-            print(x,y)
             text[y][x] += 1
         for row in text:
             print(''.join([str(c) if c > 0 else '.' for c in row]))
 
-            
+    def topleft(self):
+        N = 0
+        w2 = self.width // 4
+        for robot in self.robots:
+            x = robot.posn[0]
+            y = robot.posn[1]
+            if x + y < w2:
+                N += 1
+        return N
+    
+    def topright(self):
+        N = 0
+        w2 = self.width // 4
+        for robot in self.robots:
+            x = self.width - robot.posn[0]
+            y = robot.posn[1]
+            if x + y < w2:
+                N += 1
+        return N
+    
+    def top_v_bottom(self):
+        above = 0
+        below = 0
+        h2 = self.height // 2
+        for robot in self.robots:
+            y = robot.posn[1]
+            if y < h2:
+                above += 1
+            else:
+                below += 1
+        return above / below
 
 def read_input(input: Path) -> Generator[Robot, None, None]:
     with open(input, 'r') as f:

@@ -14,8 +14,8 @@ test2:
 
 # Runs the part 1 puzzle with the challenge input.
 part1:
-    python3 part1.py --input input.txt --width 101 --height 103 --count 100
+    python3 part1.py --input input.txt --width 101 --height 103
 
 # Runs the part 2 puzzle with the challenge input.
 part2:
-    python3 part2.py --input input.txt --width 101 --height 103 --count 100
+    python3 part2.py --input input.txt --width 101 --height 103
