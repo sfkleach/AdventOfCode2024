@@ -28,7 +28,7 @@ class Warehouse:
         shove_set = [(rx, ry)]
         if dx == 0:
             # Horizontal shove
-            print('Horizontal shove:', dx, dy)
+            # print('Horizontal shove:', dx, dy)
             x = rx
             y = ry 
             while True:
@@ -43,7 +43,7 @@ class Warehouse:
                     shove_set.append((x, y))
         else:
             # Vertical shove.
-            print('Vertical shove:', dx, dy)
+            # print('Vertical shove:', dx, dy)
             dump = []
             while True:
                 current = shove_set
@@ -73,14 +73,14 @@ class Warehouse:
         rx, ry = self.robot
         dx, dy = translate_dirn(move)
         if self.free_to_move(dx, dy):
-            print('Free to move:', move, rx, ry, dx, dy, rx+dx, ry+dy)
+            # print('Free to move:', move, rx, ry, dx, dy, rx+dx, ry+dy)
             self.grid[rx][ry] = '.'
             self.grid[rx+dx][ry+dy] = '@'
             self.robot = (rx+dx, ry+dy)
         else:
-            print('Shove:', move, dx, dy)
+            # print('Shove:', move, dx, dy)
             shove_set = self.find_shove_set(dx, dy)
-            print('Shoveset:', shove_set)
+            # print('Shoveset:', shove_set)
             if shove_set:
                 previous = {}
                 for x, y in shove_set:
@@ -117,12 +117,12 @@ def read_input(input_path: Path) -> Tuple[Warehouse, Tuple[str]]:
 
 def run(args):
     warehouse, instructions = read_input(args.input)
-    warehouse.print()
+    # warehouse.print()
     for n, inst in enumerate(instructions):
         # if n > 2: break
-        print(f'Move {n}:', inst)
+        # print(f'Move {n}:', inst)
         warehouse.move(inst)
-        warehouse.print()
+        # warehouse.print()
     print('Score:', warehouse.score())
 
 def main():
