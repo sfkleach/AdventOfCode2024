@@ -1,9 +1,16 @@
-from day17 import *
+from day17 import read_input
 import argparse
 from pathlib import Path
 
 def run(args):
-    ...
+    base = read_input(args.input)
+    m = base.clone()
+    m.A = 109019476330651
+    if m.run_carefully():
+        print('Found:', 109019476330651)
+
+    print('Done')
+
 
 def main():
     # Create the argument parser

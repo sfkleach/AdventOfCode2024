@@ -1,4 +1,4 @@
-from part1 import ABCRegisterMachine
+from day17 import ABCRegisterMachine
 
 def test1():
     abc = ABCRegisterMachine([2, 6], C=9)
@@ -31,9 +31,29 @@ def test5():
     abc.run()
     assert(abc.B == 44354)
 
+def test6():
+    abc = ABCRegisterMachine([0,3,5,4,3,0], A=117440)
+    abc.run()
+    print(abc.program)
+    print(abc.output)
+    assert(abc.program == tuple(abc.output))
+
+def test7():
+    print('test7')
+    base = ABCRegisterMachine([0,3,5,4,3,0], A=0)
+    for i in range(0, 117441):
+        # print('# ', i)
+        m = base.clone()
+        m.A = i
+        if m.run_carefully():
+            print(i)
+        
+
 if __name__ == "__main__":
     test1()
     test2()
     test3()
     test4()
     test5()
+    test6()
+    test7()

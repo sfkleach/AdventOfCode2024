@@ -10,7 +10,7 @@ test1:
 
 # Runs the part 2 puzzle with the test input.
 test2:
-    python3 part2.py --input test.txt
+    python3 part2.py --input test2.txt
 
 # Runs the part 1 puzzle with the challenge input.
 part1:
