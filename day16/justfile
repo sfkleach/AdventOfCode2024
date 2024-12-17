@@ -5,12 +5,18 @@ default:
     just --list
 
 # Runs the part 1 puzzle with the test input.
-test1:
-    python3 part1.py --input test.txt
+test1a:
+    python3 part1.py --input test_a.txt
+
+test1b:
+    python3 part1.py --input test_b.txt
 
 # Runs the part 2 puzzle with the test input.
-test2:
-    python3 part2.py --input test.txt
+test2a:
+    python3 part2.py --input test_a.txt
+
+test2b:
+    python3 part2.py --input test_b.txt
 
 # Runs the part 1 puzzle with the challenge input.
 part1:

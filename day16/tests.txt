@@ -1,0 +1,4 @@
+TESTS = {
+    'test_a.txt': 7036,
+    'test_b.txt': 11048
+}
