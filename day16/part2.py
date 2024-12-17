@@ -1,9 +1,20 @@
-from day16 import *
+from day16 import read_input, Maze
 import argparse
 from pathlib import Path
 
+MAZE = None
+
 def run(args):
-    ...
+    global MAZE
+    maze = Maze(read_input(args.input))
+    MAZE = maze
+    solution = maze.solve()
+    if solution:
+        maze.show(solution)
+        print(solution.score - 2)
+        maze.show_best_seats()
+    else:
+        print('No solution')
 
 def main():
     # Create the argument parser
