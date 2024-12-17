@@ -1,3 +1,4 @@
+import re
 from day17 import *
 import argparse
 from pathlib import Path
@@ -40,9 +41,9 @@ class ABCRegisterMachine:
         elif opcode == 5:   # OUT
             self.output.append(self.combo(operand) & 0x7)
         elif opcode == 6:   # BDV = B shift right
-            self.B >>= self.combo(operand)
+            self.B = self.A >> self.combo(operand)
         elif opcode == 7:   # CDV = C shift right
-            self.B >>= self.combo(operand)
+            self.C = self.A >> self.combo(operand)
         else:
             raise ValueError(f'Invalid opcode: {opcode}')
         self.pc += 2
@@ -59,8 +60,22 @@ class ABCRegisterMachine:
         else:
             raise ValueError(f'Invalid combo operand: {operand}')
 
+def read_input(file_path: Path) -> ABCRegisterMachine:
+    with open(file_path) as file:
+        text = file.read()
+        text = re.sub(r'[^-\d]', ' ', text).split()
+        numbers = [int(x) for x in text]
+        A = numbers[0]
+        B = numbers[1]
+        C = numbers[2]
+        program = numbers[3:]
+    return ABCRegisterMachine(program, A=A, B=B, C=C)
+
 def run(args):
-    ...
+    m = read_input(args.input)
+    output = m.run()
+    print(output)
+    print(','.join(map(str,output)))
 
 def main():
     # Create the argument parser
