@@ -1,9 +1,12 @@
 from day18 import *
 import argparse
 from pathlib import Path
+import json
 
 def run(args):
-    ...
+    with open(args.input, 'r') as f:
+        jdata = json.load(f)
+    print(jdata)
 
 def main():
     # Create the argument parser
