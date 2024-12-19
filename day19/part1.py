@@ -1,9 +1,17 @@
-from day19 import *
+from day19 import read_input
 import argparse
 from pathlib import Path
+import re
 
 def run(args):
-    ...
+    towels, targets = read_input(args.input)
+    print(towels)
+    print(targets)
+    regex = re.compile("^(?:" + '|'.join(towels) + ")*$")
+    print(regex)
+    ok = tuple(filter(lambda x: regex.match(x), targets))
+    print('Length:', len(ok))
+    # print(sum(1 for _ in filter(lambda x: regex.match(x), targets)))
 
 def main():
     # Create the argument parser
