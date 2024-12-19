@@ -6,7 +6,7 @@ default:
 
 # Runs the part 1 puzzle with the test input.
 test1:
-    python3 part1.py --input test.json
+    python3 part1.py --input test.json --count 12
 
 # Runs the part 2 puzzle with the test input.
 test2:
@@ -14,7 +14,7 @@ test2:
 
 # Runs the part 1 puzzle with the challenge input.
 part1:
-    python3 part1.py --input input.json
+    python3 part1.py --input input.json --count 1024
 
 # Runs the part 2 puzzle with the challenge input.
 part2:

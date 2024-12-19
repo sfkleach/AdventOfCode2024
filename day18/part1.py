@@ -27,18 +27,30 @@ class Trail:
         return False
     
     def print(self):
+        n = 0
         t = self
         while t is not None:
+            n += 1
             print(t.xy, '.')
             t = t.trail
+        print('Length:', n)
+
+    def len(self):
+        n = 0
+        t = self
+        while t is not None:
+            n += 1
+            t = t.trail
+        return n
     
 DIRECTIONS = ((0, 1), (1, 0), (0, -1), (-1, 0))
     
 class MemorySpace:
 
-    def __init__(self, size):
+    def __init__(self, size, corrupted: list[list[int]]):
         self.size = size
         self.locations: list[list[list[Trail]]] = [[[] for _ in range(size)] for _ in range(size)]
+        self.corrupted = set(map(lambda x: (x[0], x[1]), corrupted))
 
     def get(self, x, y):
         return self.locations[y][x]
@@ -50,8 +62,10 @@ class MemorySpace:
         queue = []
         heapq.heappush(queue, Trail((0,0), 0, None))
         while queue:
-            print('queue:', queue)
+            # print('queue:', queue)
             trail = heapq.heappop(queue)
+            if trail.xy in self.corrupted:
+                continue
             x, y = trail.xy
             cell = self.get(x, y)
             is_smallest = not cell
@@ -75,17 +89,19 @@ class MemorySpace:
 def run(args):
     with open(args.input, 'r') as f:
         jdata = json.load(f)
-    print(jdata)
-    m = MemorySpace(jdata['size'])
+    # print(jdata)
+    m = MemorySpace(jdata['size'], jdata['data'][:args.count])
     m.init()
-    m.get_shortest_path().print()
+    path = m.get_shortest_path()
+    path.print()
+    print('Score:', path.len()-1)
 
 
 def main():
     # Create the argument parser
     parser = argparse.ArgumentParser(description='Process some options.')
     parser.add_argument('--input', type=Path, help='Input file path')
-    parser.add_argument('--debug', action='store_true', help='Enable debug mode')
+    parser.add_argument('--count', type=int, help='Number of iterations')
 
     # Parse the arguments
     args = parser.parse_args()
