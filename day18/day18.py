@@ -82,3 +82,6 @@ class MemorySpace:
 
     def get_shortest_path(self):
         return heapq.nsmallest(1, self.get_end())[0]
+    
+    def has_solution(self):
+        return bool(self.get_end())
